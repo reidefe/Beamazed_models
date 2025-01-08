@@ -12,10 +12,10 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import warnings
 
-# Suppress future warnings from XGBRegressor
 warnings.filterwarnings("ignore", category=FutureWarning)
 
-class MLApplication:
+
+class PredictViews:
     def __init__(self, root):
         self.root = root
         self.root.title("Video Views Prediction Model")
@@ -122,7 +122,11 @@ class MLApplication:
         feature_columns = ['Shares', 'Comments added', 'Likes (vs. dislikes) (%)',
                            'Average view duration', 'Subscribers',
                            'Impressions click-through rate (%)']
-        df = df.fillna(0)  # Handle remaining NaN values by filling with 0
+        df = df.fillna(0)
+        for col in feature_columns:
+            if df[col].dtype in ['float64', 'int64']:
+                df[col] = StandardScaler().fit_transform(df[[col]])
+        # Target variable
         X = df[feature_columns]
         y = df['Views']
         return train_test_split(X, y, test_size=0.2, random_state=42)
@@ -150,6 +154,10 @@ class MLApplication:
         self.output_queue.put(f"RMSE: {rmse:,.2f}")
         self.output_queue.put(f"R² Score: {r2:.4f}")
 
+        self.output_queue.put("\nPredicted Views for Test Data:")
+        for actual, pred in zip(y_val[:10], y_pred[:10]):  # Display the first 10 predictions
+            self.output_queue.put(f"Actual: {actual:,.0f}, Predicted: {pred:,.0f}")
+
         return y_pred
 
     def feature_importance_plot(self, model, feature_columns):
@@ -158,8 +166,9 @@ class MLApplication:
             'Importance': model.feature_importances_
         }).sort_values('Importance', ascending=False)
 
-        self.output_queue.put("\nFeature Importance:")
-        self.output_queue.put(str(feature_importance))
+        self.output_queue.put("\nFeature Importance (Descending Order):")
+        for idx, row in feature_importance.iterrows():
+            self.output_queue.put(f"{row['Feature']}: {row['Importance']:.4f}")
 
         self.create_feature_importance_plot(feature_importance)
 
@@ -169,6 +178,9 @@ class MLApplication:
 
         fig, ax = plt.subplots(figsize=(10, 6))
         feature_importance_df.plot(kind='bar', x='Feature', y='Importance', ax=ax)
+        ax.set_title("Feature Importance")
+        ax.set_ylabel("Importance")
+        ax.set_xlabel("Features")
         plt.xticks(rotation=45, ha='right')
         plt.tight_layout()
 
@@ -204,7 +216,8 @@ class MLApplication:
 
         threading.Thread(target=train_thread, daemon=True).start()
 
+
 if __name__ == "__main__":
     root = tk.Tk()
-    app = MLApplication(root)
+    app = PredictViews(root)
     root.mainloop()
