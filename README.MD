@@ -68,7 +68,7 @@ Use the trained model to predict views for the videos in X_test.csv.
 # Audience Retention Prediction
 
 ## Overview
-Audience retention prediction percentages for videos based on historical data and corresponding transcripts. It uses a trained machine learning model to generate retention predictions for specific video segments, particularly positions 0 to 5. The application displays results in a log and visualizes them using a scatter plot.
+Audience retention prediction percentages for videos based on provided data and corresponding transcripts. It uses a trained machine learning model to generate retention predictions for specific video segments, particularly positions 0 to 5. The application displays results in a log and visualizes them using a scatter plot.
 
 ## Model Choice
 The **Random Forest Regressor** was selected for this task because of its:
@@ -88,7 +88,7 @@ Key features include:
 - **Position**: The segment of the video for which predictions are made.
 
 ### Model Training
-- The model was trained using historical data, associating the above features with retention percentages.
+- The model was trained using provided data, associating the above features with retention percentages.
 - The training dataset comprised multiple videos and their corresponding retention graphs and transcripts.
 
 ### Prediction Process
@@ -103,7 +103,7 @@ Key features include:
 
 ## Application Workflow
 1. **Load Data Folder**:
-   - Uploads a folder containing historical video data (`.xlsx`) and transcripts (`.docx`).
+   - Uploads a folder containing video data (`.xlsx`) and transcripts (`.docx`).
 2. **Load Sample File**:
    - Uploads the sample `.xlsx` file with missing retention values for prediction.
 3. **Predict Retention**:
@@ -117,7 +117,7 @@ Key features include:
 - Visualizes the predictions using a plot, showing retention percentages across video positions.
 
 ## Example Usage
-1. Upload historical video data and transcripts via the `Load Data Folder` button.
+1. Upload video data in transcripts form via the `Load Data Folder` button.
 2. Upload the sample `.xlsx` file via the `Load Sample File` button.
 3. Click the `Predict Retention` button to generate predictions and view results in the log and plot tabs.
 
@@ -128,7 +128,7 @@ Key features include:
 # Intro Optimization For Audience Retention 
 
 ## Overview
-The **Intro Optimization script** is designed to improve audience retention percentages for video introductions. By analyzing historical transcript data and retention metrics, the application identifies the best-optimized introduction to maximize audience engagement.
+The **Intro Optimization script** is designed to improve audience retention percentages for video introductions. By analyzing provided transcript data and retention metrics, the application identifies the best-optimized introduction to maximize audience engagement.
 
 This tool allows users to:
 1. Train a predictive retention model based on existing data.
