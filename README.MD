@@ -1,3 +1,5 @@
+# All tasks where done using tkinter as the visual interface to make usage, model training and inference direct and simple
+
 # Task 1
 ## Views Prediction
 - Model to predict Views for a given video from the video features using Scikit-Learn and tkinker for user interaction 
@@ -66,7 +68,7 @@ Use the trained model to predict views for the videos in X_test.csv.
 # Audience Retention Prediction
 
 ## Overview
-This application predicts audience retention percentages for videos based on historical data and corresponding transcripts. It uses a trained machine learning model to generate retention predictions for specific video segments, particularly positions 0 to 5. The application displays results in a log and visualizes them using a scatter plot.
+Audience retention prediction percentages for videos based on historical data and corresponding transcripts. It uses a trained machine learning model to generate retention predictions for specific video segments, particularly positions 0 to 5. The application displays results in a log and visualizes them using a scatter plot.
 
 ## Model Choice
 The **Random Forest Regressor** was selected for this task because of its:
@@ -123,10 +125,10 @@ Key features include:
 
 # Task 3
 
-# Audience Retention Optimization Application
+# Intro Optimization For Audience Retention 
 
 ## Overview
-The **Audience Retention Optimization Application** is designed to improve audience retention percentages for video introductions. By analyzing historical transcript data and retention metrics, the application identifies the best-optimized introduction to maximize audience engagement.
+The **Intro Optimization script** is designed to improve audience retention percentages for video introductions. By analyzing historical transcript data and retention metrics, the application identifies the best-optimized introduction to maximize audience engagement.
 
 This tool allows users to:
 1. Train a predictive retention model based on existing data.

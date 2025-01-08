@@ -12,10 +12,16 @@ import os
 from dotenv import load_dotenv
 import spacy
 
-class RetentionIntroOptimizationApp:
+
+class IntroOptimizationApp:
+    """
+    The Intro Optimization script is designed to improve audience retention percentages for video introductions. By
+    analyzing historical transcript data and retention metrics, the application identifies the best-optimized
+    introduction to maximize audience engagement.
+    """
     def __init__(self, root):
         self.root = root
-        self.root.title("Audience Retention Optimization")
+        self.root.title("intro Optimization for audience retention")
         self.root.geometry("1200x800")
 
         self.model = None
@@ -155,7 +161,8 @@ class RetentionIntroOptimizationApp:
         """
         Display the best introduction prominently in the output box.
         """
-        best_intro_label = tk.Label(self.output_frame, text=f"Best Optimized Introduction: {best_intro}\nPredicted Retention: {best_retention:.2f}%",
+        best_intro_label = tk.Label(self.output_frame,
+                                    text=f"Best Optimized Introduction: {best_intro}\nPredicted Retention: {best_retention:.2f}%",
                                     font=("Helvetica", 14, "bold"), fg="green", wraplength=1000, justify="left")
         best_intro_label.pack(pady=10)
 
@@ -179,7 +186,8 @@ class RetentionIntroOptimizationApp:
         optimized_intro = response.choices[0].message.content
         return optimized_intro
 
+
 if __name__ == "__main__":
     root = tk.Tk()
-    app = RetentionIntroOptimizationApp(root)
+    app = IntroOptimizationApp(root)
     root.mainloop()

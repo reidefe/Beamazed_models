@@ -16,6 +16,9 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 
 
 class PredictViews:
+    """
+       Model to predict Views for a given video from the video features using Scikit-Learn and tkinker for user interaction
+    """
     def __init__(self, root):
         self.root = root
         self.root.title("Video Views Prediction Model")

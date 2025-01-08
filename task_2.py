@@ -10,6 +10,11 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 
 class RetentionPredictionApp:
+    """
+    Audience retention prediction percentages for videos based on historical data and corresponding transcripts. It
+    uses a trained machine learning model to generate retention predictions for specific video segments, particularly
+    positions 0 to 5. The application displays results in a log and visualizes them using a Line plot.
+    """
     def __init__(self, root):
         self.root = root
         self.root.title("Audience Retention Prediction")
