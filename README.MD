@@ -130,6 +130,8 @@ Key features include:
 ## Overview
 The **Intro Optimization script** is designed to improve audience retention percentages for video introductions. By analyzing provided transcript data and retention metrics, the application identifies the best-optimized introduction to maximize audience engagement.
 
+### Please make use to add your openai key when testing as it uses openai GPT4o-mini for the best possible intro generation. Simply take the `sample.env` and rename it to `.env`, then add your openai key to the OPENAI_KEY variable
+
 This tool allows users to:
 1. Train a predictive retention model based on existing data.
 2. Generate and evaluate optimized introductions using advanced NLP techniques.
